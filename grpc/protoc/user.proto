@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package user; // 默认包名
+
+option go_package = "./user";
+
+message GetUserReq {
+    string id = 1;
+}
+
+message GetUserResp {
+    string id = 1;
+    string name = 2;
+    string phone = 3;
+}
+
+service User {
+    rpc GetUser(GetUserReq) returns (GetUserResp);
+}
