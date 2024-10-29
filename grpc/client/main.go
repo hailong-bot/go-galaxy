@@ -14,7 +14,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer client.Close()
+	defer func(client *grpc.ClientConn) {
+		err := client.Close()
+		if err != nil {
+
+		}
+	}(client)
 	c := user.NewUserClient(client)
 	res, err := c.GetUser(context.Background(), &user.GetUserReq{Id: "1"})
 	if err != nil {

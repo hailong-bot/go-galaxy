@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"github.com/hailong-bot/go-galaxy/grpc/server/interceptor"
 	"log"
 	"net"
 
@@ -33,7 +34,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	s := grpc.NewServer()
+	s := grpc.NewServer(grpc.ChainUnaryInterceptor(interceptor.LogInterceptor, interceptor.ErrInterceptor))
 	user.RegisterUserServer(s, new(UserService))
 	log.Println("启动成功")
 	err = s.Serve(listener)
