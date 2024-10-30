@@ -8,6 +8,8 @@ require (
 )
 
 require (
+	github.com/pkg/errors v0.9.1 // indirect
+	github.com/stretchr/testify v1.9.0 // indirect
 	golang.org/x/net v0.28.0 // indirect
 	golang.org/x/sys v0.24.0 // indirect
 	golang.org/x/text v0.17.0 // indirect
