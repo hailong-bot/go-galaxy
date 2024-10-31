@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"errors"
-	"github.com/hailong-bot/go-galaxy/grpc/server/interceptor"
+	"github.com/hailong-bot/go-galaxy/rpc/grpc/standard/protoc/user"
+	"github.com/hailong-bot/go-galaxy/rpc/grpc/standard/server/interceptor"
 	"log"
 	"net"
 
-	"github.com/hailong-bot/go-galaxy/grpc/protoc/user"
 	"google.golang.org/grpc"
 )
 

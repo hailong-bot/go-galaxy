@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
+	"github.com/hailong-bot/go-galaxy/rpc/grpc/standard/protoc/user"
 	"log"
 
-	"github.com/hailong-bot/go-galaxy/grpc/protoc/user"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
