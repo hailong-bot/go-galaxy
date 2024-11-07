@@ -25,6 +25,11 @@ func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLo
 
 func (l *GetUserLogic) GetUser(in *user.GetUserReq) (*user.GetUserResp, error) {
 	// todo: add your logic here and delete this line
+	result := &user.GetUserResp{
+		Id:    "1",
+		Name:  "Test",
+		Phone: "110",
+	}
 
-	return &user.GetUserResp{}, nil
+	return result, nil
 }
