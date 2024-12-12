@@ -1,7 +1,11 @@
 package main
 
-import "github.com/hailong-bot/go-galaxy/tools/cobra/print/cmd"
-
 func main() {
-	cmd.Execute()
+
+}
+
+func OutSide(a int) func(y int) int {
+	return func(y int) int {
+		return a * y
+	}
 }

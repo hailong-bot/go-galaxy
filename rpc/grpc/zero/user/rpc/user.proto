@@ -14,6 +14,16 @@ message GetUserResp {
   string phone = 3;
 }
 
+message CreateReq {
+  int64 id = 1;
+  string name = 2;
+  string phone = 3;
+}
+message CreateResp {
+
+}
+
 service User {
   rpc GetUser(GetUserReq) returns (GetUserResp);
+  rpc Create(CreateReq) returns (GetUserResp);
 }

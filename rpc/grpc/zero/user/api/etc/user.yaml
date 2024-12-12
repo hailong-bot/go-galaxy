@@ -1,3 +1,11 @@
 Name: User
 Host: 0.0.0.0
 Port: 8888
+
+UserRpc:
+  Etcd:
+    Hosts:
+      - 117.50.179.8:2379
+    Key: user.rpc
+    User: "root"
+    Pass: "fghf987...."

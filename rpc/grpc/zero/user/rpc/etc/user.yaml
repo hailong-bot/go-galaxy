@@ -6,3 +6,7 @@ Etcd:
   Key: user.rpc
   User: "root"
   Pass: "fghf987...."
+
+MySQL:
+  DataSource: root:root@tcp(117.50.179.8:13306)/zero?charset=utf8mb4
+
