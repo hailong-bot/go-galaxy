@@ -9,4 +9,7 @@ type Config struct {
 	rest.RestConf
 
 	UserRpc zrpc.RpcClientConf
+	MySQL   struct {
+		DataSource string
+	}
 }

@@ -16,9 +16,30 @@ type (
 	}
 )
 
+type (
+	CreateUserReq {
+		Name   string `json:"name"`
+		Mobile string `json:"mobile"`
+	}
+	CreateUserResp {
+		Id int64 `json:"id"`
+	}
+)
+
 // 定义服务描述
 service User {
 	@handler user
 	get /user (UserReq) returns (UserResp)
+}
+
+@server (
+	middleware: LoginVerification
+)
+service User {
+	@handler getUser
+	get /userinfo (UserReq) returns (UserResp)
+
+	@handler createUser
+	post /createUser (CreateUserReq) returns (CreateUserResp)
 }
 
