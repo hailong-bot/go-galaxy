@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"database/sql"
 	"github.com/hailong-bot/go-galaxy/rpc/grpc/zero/user/models"
 
 	"github.com/hailong-bot/go-galaxy/rpc/grpc/zero/user/rpc/internal/svc"
@@ -24,11 +25,24 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 	}
 }
 
-func (l *CreateLogic) Create(in *user.CreateReq) (*user.GetUserResp, error) {
-	// todo: add your logic here and delete this line
-
-	l.svcCtx.UserModel.Insert(l.ctx, &models.User{
-		Id: in.Id,
+func (l *CreateLogic) Create(in *user.CreateReq) (*user.CreateResp, error) {
+	insertPO, err := l.svcCtx.UserModel.Insert(l.ctx, &models.User{
+		Id:     in.Id,
+		Mobile: in.Phone,
+		Name: sql.NullString{
+			String: in.Name,
+			Valid:  true,
+		},
 	})
-	return &user.GetUserResp{}, nil
+	if err != nil {
+		return nil, err
+	}
+	id, err := insertPO.LastInsertId()
+	if err != nil {
+		return nil, err
+
+	}
+	return &user.CreateResp{
+		Id: id,
+	}, nil
 }

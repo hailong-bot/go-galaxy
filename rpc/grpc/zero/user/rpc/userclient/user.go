@@ -21,7 +21,7 @@ type (
 
 	User interface {
 		GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserResp, error)
-		Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*GetUserResp, error)
+		Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*CreateResp, error)
 	}
 
 	defaultUser struct {
@@ -40,7 +40,7 @@ func (m *defaultUser) GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.
 	return client.GetUser(ctx, in, opts...)
 }
 
-func (m *defaultUser) Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*GetUserResp, error) {
+func (m *defaultUser) Create(ctx context.Context, in *CreateReq, opts ...grpc.CallOption) (*CreateResp, error) {
 	client := user.NewUserClient(m.cli.Conn())
 	return client.Create(ctx, in, opts...)
 }

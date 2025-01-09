@@ -20,10 +20,10 @@ message CreateReq {
   string phone = 3;
 }
 message CreateResp {
-
+  int64 id = 1;
 }
 
 service User {
   rpc GetUser(GetUserReq) returns (GetUserResp);
-  rpc Create(CreateReq) returns (GetUserResp);
+  rpc Create(CreateReq) returns (CreateResp);
 }
