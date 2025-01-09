@@ -11,4 +11,4 @@ CREATE TABLE user (
                       UNIQUE mobile_index (mobile),
                       UNIQUE name_index (name),
                       PRIMARY KEY (id)
-) ENGINE = InnoDB COLLATE utf8mb4_general_ci COMMENT 'user table';
+) ENGINE = InnoDB COLLATE utf8mb4_general_ci COMMENT 'user table'

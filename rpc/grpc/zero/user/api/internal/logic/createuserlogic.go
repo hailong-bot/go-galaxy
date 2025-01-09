@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"github.com/hailong-bot/go-galaxy/rpc/grpc/zero/user/rpc/userclient"
 
 	"github.com/hailong-bot/go-galaxy/rpc/grpc/zero/user/api/internal/svc"
 	"github.com/hailong-bot/go-galaxy/rpc/grpc/zero/user/api/internal/types"
@@ -25,6 +26,15 @@ func NewCreateUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Create
 
 func (l *CreateUserLogic) CreateUser(req *types.CreateUserReq) (resp *types.CreateUserResp, err error) {
 	// todo: add your logic here and delete this line
+	createBody, err := l.svcCtx.UserClient.Create(l.ctx, &userclient.CreateReq{
+		Name:  req.Name,
+		Phone: req.Mobile,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return
+	return &types.CreateUserResp{
+		Id: createBody.Id,
+	}, nil
 }
